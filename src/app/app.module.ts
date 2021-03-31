@@ -6,18 +6,27 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
-
+import { AuthoritationComponent } from './authoritation/authoritation.component';
+ 
+ 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserNameDirective } from './Validators/user-name.directive';
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    AuthoritationComponent,
+    UserNameDirective,
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
