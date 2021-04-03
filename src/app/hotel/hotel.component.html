@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-4">
+            <img src="hotels.imgLink" alt="">
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<form class='container mt-7' #myForm="ngForm" class='myForm' (ngSubmit)='addHotel()'>
+
+    <div class='row'>
+
+        <div class='col-12 '>
+            <input class='transparent mt-2' type="text" placeholder="HotelName" name="hotelName" [(ngModel)]='hotel.hotelName' required>
+        </div>
+
+        <div class='col-12 '>
+            <input class='transparent mt-2' type="text" placeholder="City" name="city" [(ngModel)]='hotel.city' required>
+        </div>
+
+        <div class='col-12 '>
+            <input class='transparent mt-2' type="text" placeholder="Address" name="address" [(ngModel)]='hotel.address' required>
+        </div>
+
+        <div class='col-12 '>
+            <input class='transparent mt-2' type="number" placeholder="StarNumber" name="starNumber" [(ngModel)]='hotel.starNumber' required>
+        </div>
+
+        <div class='col-12 '>
+            <input class='transparent mt-2' type="number" placeholder="RoomsNumber" name="RoomsNumber" [(ngModel)]='hotel.RoomsNumber' required>
+        </div>
+
+        <div class='col-12 '>
+
+            <input class='transparent mt-2' type="text" placeholder="generalcharacteristics" name="generalcharacteristics" [(ngModel)]='hotel.generalcharacteristics' required>
+        </div>
+
+        <div class='col-12 '>
+            <input class='transparent mt-2' type="text" placeholder="ImgLink" name="imgLink" [(ngModel)]='hotel.imgLink' required>
+        </div>
+
+        <div class='col-12 '>
+            <button type="submit" class='transparent mt-2'>Enter</button>
+        </div>
+
+
+    </div>
+
+</form>

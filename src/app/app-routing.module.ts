@@ -4,6 +4,8 @@ import { AuthoritationComponent } from './authoritation/authoritation.component'
 import { HomeComponent } from './home/home.component';
  
 import { WelcomeComponent } from './welcome/welcome.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { SingleHotelComponent } from './hotel/single-hotel/single-hotel.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,15 @@ const routes: Routes = [
     path: 'authoritation',
     component: AuthoritationComponent
   },
+  {
+    path: 'hotel',
+    component: HotelComponent
+  },
+  {
+    path: 'details/:id',
+    component: SingleHotelComponent
+  }
+
    
   
    

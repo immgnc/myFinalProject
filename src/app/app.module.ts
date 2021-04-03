@@ -15,6 +15,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserNameDirective } from './Validators/user-name.directive';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { SingleHotelComponent } from './hotel/single-hotel/single-hotel.component';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
  
 @NgModule({
   declarations: [
@@ -25,6 +29,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AuthoritationComponent,
     UserNameDirective,
     WelcomeComponent,
+    HotelComponent,
+    SingleHotelComponent,
+     
   
   
   ],
@@ -33,7 +40,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

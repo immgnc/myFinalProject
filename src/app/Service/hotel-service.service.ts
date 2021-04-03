@@ -7,39 +7,31 @@ import {AngularFireDatabase, AngularFireList} from '@angular/fire/database'
 })
 export class HotelServiceService {
 
-  constructor() { }
- 
+  dbPath = '/HotelsList';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ProductService {
+  hotelRef: AngularFireList<any> ;
+  
+  getInfoList() {
+    return this.hotelRef
+  }
 
-//   dbPath = '/productsArray';
+  constructor(private db: AngularFireDatabase) { 
+    this.hotelRef = db.list(this.dbPath)
+  }
 
-//  productRef: AngularFireList<any> = null;
+  addHotel(hotelObject:any) {
+    this.db.list(this.dbPath).push(hotelObject)
+  }
 
-//   getInfoList() {
-//     return this.productRef
-//   }
+  removeHotel(personhotelId:any){
+    this.db.list(this.dbPath).remove(personhotelId)
+  }
 
-//   constructor(private db: AngularFireDatabase) { 
-//     this.productRef = db.list(this.dbPath)
-//   }
+  updateHotel(hotelObject:any) {
+    this.db.list(this.dbPath).update(hotelObject.id, hotelObject)
+  }
 
-//   addProduct(productObject) {
-//     this.db.list(this.dbPath).push(productObject)
-//   }
-
-//   removeProduct(personproductId){
-//     this.db.list(this.dbPath).remove(personproductId)
-//   }
-
-//   updatePerson(productObject) {
-//     this.db.list(this.dbPath).update(productObject.id, productObject)
-//   }
-
-//   getProduct(productKey) {
-//     return this.db.object(this.dbPath + '/' + productKey)
-//   }
+  getHotel(hotelKey:any) {
+    return this.db.object(this.dbPath + '/' + hotelKey)
+  }
 }
