@@ -1,1 +1,45 @@
- 
+<section class="single-hotel mt-3">
+    <div class="single-hotel-wrapper">
+
+        <div class="hotel-left-side ">
+            <img [src]="singleHotel.imgLink">
+        </div>
+
+        <div class="hotel-right-side">
+
+            <h3 class="hotel-name">
+                {{singleHotel.hotelName}}
+            </h3>
+
+            <h4 class="hotel-name">
+                city : {{singleHotel.city}}
+            </h4>
+            <h4 class="hotel-name">
+                Address: {{singleHotel.address}}
+            </h4>
+
+            <div class="rating">
+
+                <div class="star-rating pr-3">
+                    <div class="star-holder">
+                        <span>Star Number:</span> {{singleHotel.starNumber}}
+                    </div>
+                </div>
+
+                <div class="star-rating">
+                    <div class="star-holder">
+                        <span>Rooms Number:</span> {{singleHotel.RoomsNumber}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotel-details">
+                <div class="avail">
+                    <h4>Hotels Gneral Characteristics: : </h4>
+                    <span class="availibility-status"> {{singleHotel.generalcharacteristics}} </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

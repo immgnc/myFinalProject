@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HotelServiceService } from '../../Service/hotel-service.service';
 
 @Component({
   selector: 'app-single-hotel',
@@ -10,13 +8,33 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./single-hotel.component.scss'],
 })
 export class SingleHotelComponent implements OnInit {
+  constructor(
+    private router: ActivatedRoute,
+    private hs: HotelServiceService,
+    private rout: Router
+  ) {}
 
-
-  constructor(private router: ActivatedRoute) { }
-  
-  ngOnInit(): void {
-   console.log(this.router.snapshot.params)
+  counter(arrayLength:any) {
+    return new Array(arrayLength);
   }
 
- 
+  singleHotel : any;
+
+  hotelId = '';
+  ngOnInit(): void {
+
+    this.hotelId = this.router.snapshot.params.id;
+
+    const hotel = this.hs.getHotel(this.hotelId);
+
+    hotel.valueChanges().subscribe((data) => {
+      this.singleHotel = data;
+    });
+  }
+
+  removeItem() {
+    this.hs.removeHotel(this.hotelId);
+
+    this.rout.navigate(['/hotels']);
+  }
 }

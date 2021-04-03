@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { HotelServiceService } from '../Service/hotel-service.service';
 
 @Component({
   selector: 'app-hotel',
@@ -10,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class HotelComponent implements OnInit {
   ngOnInit(): void {
-    this.getPersonsList();
+    this.getHotelList();
   }
 
   hotel = {
@@ -25,25 +26,25 @@ export class HotelComponent implements OnInit {
 
   hotels :any;
 
-  getPersonsList() {
-    this.db
-      .list('HotelsList')
+  getHotelList() {
+    this.hs.getInfoList()
       .snapshotChanges()
       .pipe(
-        map(data => {
-          console.log(data);
-          return data.map(info => ({
+        map((data) => {
+          
+          return data.map((info) => ({
             key: info.key,
             ...(info.payload.val() as {}),
           }));
         })
       )
       .subscribe((data) => {
+        
         this.hotels = data;
-        console.log(this.hotels);
+        console.log(this.hotels)
       });
   }
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase, private hs:HotelServiceService) {}
 
   addHotel() {
     this.db.list('HotelsList').push(this.hotel);

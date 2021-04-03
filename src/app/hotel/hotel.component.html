@@ -1,15 +1,22 @@
-<div class="container">
-    <div class="row">
+<section class="hotels">
+    <div class="wrapper">
 
-        <div class="col-4">
-            <img src="hotels.imgLink" alt="">
+        <div class="hotels-holder">
+            <ul class="hotels-ul">
+                <li class="hotels-li" *ngFor="let hotel of hotels">
+                    <div class="hotels-image-holder">
+                        <img [src]="hotel.imgLink">
+                    </div>
+
+                    <a class="see-more" [routerLink]="'/details/' + hotel.key">{{hotel.hotelName}}</a>
+                </li>
+            </ul>
         </div>
-
     </div>
-</div>
+</section>
+<router-outlet>
 
-
-
+</router-outlet>
 
 
 
