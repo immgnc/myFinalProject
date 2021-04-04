@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -12,7 +13,6 @@ import { HotelServiceService } from '../Service/hotel-service.service';
 export class HotelComponent implements OnInit {
   ngOnInit(): void {
     this.getHotelList();
-     
   }
 
   hotel = {
@@ -22,22 +22,23 @@ export class HotelComponent implements OnInit {
     starNumber: 0,
     RoomsNumber: 0,
     generalcharacteristics: [],
-   imgLink: ''
+    imgLink: '',
   };
-
+  k = 0;
   hotels: any;
-  cities : string[] = [];
+  newHotels: any[] = [];
+  cities: string[] = [];
   starNumber: string[] = [];
   RoomsNumber: string[] = [];
   generalcharacteristics: string[] = [];
-   
-  
+  hidden: boolean = true;
+
   getHotelList() {
-    this.hs.getInfoList()
+    this.hs
+      .getInfoList()
       .snapshotChanges()
       .pipe(
         map((data) => {
-          
           return data.map((info) => ({
             key: info.key,
             ...(info.payload.val() as {}),
@@ -45,16 +46,15 @@ export class HotelComponent implements OnInit {
         })
       )
       .subscribe((data) => {
-        
-        this.hotels = data;
-        console.log(this.hotels)
-
-       
-        this. searchHotel()
+        this.hotels = data;         
+        this.search();
       });
   }
 
-  constructor(private db: AngularFireDatabase, private hs:HotelServiceService) {}
+  constructor(
+    private db: AngularFireDatabase,
+    private hs: HotelServiceService
+  ) {}
 
   addHotel() {
     this.db.list('HotelsList').push(this.hotel);
@@ -64,44 +64,52 @@ export class HotelComponent implements OnInit {
     this.hotel.starNumber = 0;
     this.hotel.RoomsNumber = 0;
     this.hotel.generalcharacteristics = [];
-    this.hotel.imgLink= '';
+    this.hotel.imgLink = '';
   }
 
+  search() {
+    for (let i = 0; i < this.hotels.length; i++) {
+      let str = this.hotels[i].city;
+      let str1 = this.hotels[i].starNumber;
+      let str2 = this.hotels[i].RoomsNumber;
 
-  searchHotel() {
-    for (let i = 0; i < this.hotels.length; i++){
-
-
-     
-      let str = this.hotels[i].city
-      let str1 = this.hotels[i].starNumber
-      let str2 = this.hotels[i].RoomsNumber
-
-       let newGen = this.hotels[i].generalcharacteristics.split(',')
+      let newGen = this.hotels[i].generalcharacteristics.split(',');
       for (let j = 0; j < newGen.length; j++) {
-       
-        let str3 = newGen[j]
-        console.log(str3)
-        this.generalcharacteristics.push(str3)
+        let str3 = newGen[j];
+        
+        this.generalcharacteristics.push(str3);
       }
 
-      this.cities.push(str)
-      this.starNumber.push(str1)
-      this.RoomsNumber.push(str2)
-      
+      this.cities.push(str);
+      this.starNumber.push(str1);
+      this.RoomsNumber.push(str2);
     }
 
     this.cities = [...new Set(this.cities)];
     this.starNumber = [...new Set(this.starNumber)];
     this.RoomsNumber = [...new Set(this.RoomsNumber)];
-    
+
     this.generalcharacteristics = [...new Set(this.generalcharacteristics)];
 
-     
-
- 
-    console.log(this.generalcharacteristics)
+    
   }
 
-
-}
+  searchHotel(form: any) {
+    this.newHotels = [];
+    console.log(form.value.generalcharacteristics)
+    this.hidden = false;
+console.log(this.hotels)
+    for (let i = 0; i < this.hotels.length; i++) {
+      if (this.hotels[i].city === form.value.city) {
+      
+        console.log(this.hotels[i].city)
+        console.log(form.value.city)
+        this.newHotels.push({ ...this.hotels[i] })
+        console.log(this.newHotels)
+      }
+     
+    }
+  
+  }
+    
+  }

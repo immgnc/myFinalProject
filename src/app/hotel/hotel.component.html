@@ -1,77 +1,96 @@
-<form class='container ' #mySearch="ngForm" class='mySearch' (ngSubmit)='searchHotel()'>
+<div class="body">
+    <form class='container ' #mySearch="ngForm" class='mySearch' (ngSubmit)='searchHotel(mySearch )'>
 
-    <div class='row search col-12'>
+        <div class='row search col-12'>
 
-        <div class='col-2 search '>
-            <select class=' mt-2' type="text" p name="city">
-                <option value="city">City</option>
-                <option *ngFor="let city of cities" value="city"   >{{city}}</option>    
+            <div class='col-2 search '>
+                <select class=' mt-2' type="text" name="city" [(ngModel)]="hotel.city">
+                <option>City</option>
+                <option *ngFor="let city of cities">{{city}}</option>    
             </select>
-        </div>
+            </div>
 
-        <div class='col-2'>
+            <div class='col-2'>
 
-            <select class=' mt-2' type="text" name="starNumber">
-                <option value="Hotel star">Hotel star</option>
-                <option *ngFor="let star of starNumber" value="city" >Hotel star: {{star}}</option>    
+                <select class=' mt-2' type="text" name="starNumber" [(ngModel)]='hotel.starNumber'>
+                <option >Hotel star</option>
+                <option *ngFor="let star of starNumber">Hotel star: {{star}}</option>    
              </select>
-        </div>
+            </div>
 
-        <div class='col-2 '>
-
-            <select class=' mt-2' type="text" name="RoomsNumber">
-                <option value="RoomsNumber">Rooms Number</option>
-                <option *ngFor="let rooms of RoomsNumber" value="citRoomsNumbery" >Rooms Number: {{rooms}}</option>    
+            <div class='col-2 '>
+                <select class=' mt-2' type="text" name="RoomsNumber" [(ngModel)]='hotel.RoomsNumber'>
+                <option >Rooms Number</option>
+                <option *ngFor="let rooms of RoomsNumber" >Rooms Number: {{rooms}}</option>    
              </select>
-        </div>
+            </div>
 
-        <div class='col-2 '>
-            <select class=' mt-2' type="text" name="RoomsNumber">
-                <option value="generalcharacteristics">General Char.</option>
-                <option *ngFor="let gen of generalcharacteristics" value="generalcharacteristics" >{{gen}}</option>    
+            <div class='col-2 '>
+                <select class=' mt-2' type="text" name="generalcharacteristics" [(ngModel)]='hotel.generalcharacteristics' multiple>
+                <option >General Char.</option>
+                <option *ngFor="let gen of generalcharacteristics" >{{gen}}</option>    
              </select>
 
+            </div>
+
+            <div class='col-2 '>
+                <button type="submit" class='  mt-2 search'>Search</button>
+            </div>
+
+
         </div>
 
-        <div class='col-2 '>
-            <button type="submit" class='  mt-2 search'>Search</button>
+    </form>
+
+
+
+
+
+    <section class="hotels" *ngIf="hidden">
+        <div class="wrapper">
+
+            <div class="hotels-holder">
+                <ul class="hotels-ul">
+                    <li class="hotels-li" *ngFor="let hotel of hotels">
+                        <div class="hotels-image-holder">
+                            <img [src]="hotel.imgLink">
+                        </div>
+
+                        <a class="see-more" [routerLink]="'/details/' + hotel.key">{{hotel.hotelName}}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </section>
 
+    <section class="hotels" *ngIf="!hidden">
+        <div class="wrapper">
 
-    </div>
+            <div class="hotels-holder">
+                <ul class="hotels-ul">
+                    <li class="hotels-li" *ngFor="let hotel of newHotels">
+                        <div class="hotels-image-holder">
+                            <img [src]="hotel.imgLink">
+                        </div>
 
-</form>
-
-
-
-
-
-<section class="hotels">
-    <div class="wrapper">
-
-        <div class="hotels-holder">
-            <ul class="hotels-ul">
-                <li class="hotels-li" *ngFor="let hotel of hotels">
-                    <div class="hotels-image-holder">
-                        <img [src]="hotel.imgLink">
-                    </div>
-
-                    <a class="see-more" [routerLink]="'/details/' + hotel.key">{{hotel.hotelName}}</a>
-                </li>
-            </ul>
+                        <a class="see-more" [routerLink]="'/details/' + hotel.key">{{hotel.hotelName}}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</section>
-<router-outlet>
-
-</router-outlet>
+    </section>
 
 
+    <router-outlet>
 
+    </router-outlet>
 
 
 
-<form class='container mt-7' #myForm="ngForm" class='myForm' (ngSubmit)='addHotel()'>
+
+
+
+    <!-- <form class='container mt-7' #myForm="ngForm" class='myForm' (ngSubmit)='addHotel()'>
 
     <div class='row'>
 
@@ -111,4 +130,7 @@
 
     </div>
 
-</form>
+</form> -->
+
+
+</div>
