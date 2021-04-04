@@ -1,3 +1,51 @@
+<form class='container ' #mySearch="ngForm" class='mySearch' (ngSubmit)='searchHotel()'>
+
+    <div class='row search col-12'>
+
+        <div class='col-2 search '>
+            <select class=' mt-2' type="text" p name="city">
+                <option value="city">City</option>
+                <option *ngFor="let city of cities" value="city"   >{{city}}</option>    
+            </select>
+        </div>
+
+        <div class='col-2'>
+
+            <select class=' mt-2' type="text" name="starNumber">
+                <option value="Hotel star">Hotel star</option>
+                <option *ngFor="let star of starNumber" value="city" >Hotel star: {{star}}</option>    
+             </select>
+        </div>
+
+        <div class='col-2 '>
+
+            <select class=' mt-2' type="text" name="RoomsNumber">
+                <option value="RoomsNumber">Rooms Number</option>
+                <option *ngFor="let rooms of RoomsNumber" value="citRoomsNumbery" >Rooms Number: {{rooms}}</option>    
+             </select>
+        </div>
+
+        <div class='col-2 '>
+            <select class=' mt-2' type="text" name="RoomsNumber">
+                <option value="generalcharacteristics">General Char.</option>
+                <option *ngFor="let gen of generalcharacteristics" value="generalcharacteristics" >{{gen}}</option>    
+             </select>
+
+        </div>
+
+        <div class='col-2 '>
+            <button type="submit" class='  mt-2 search'>Search</button>
+        </div>
+
+
+    </div>
+
+</form>
+
+
+
+
+
 <section class="hotels">
     <div class="wrapper">
 

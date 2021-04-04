@@ -12,6 +12,7 @@ import { HotelServiceService } from '../Service/hotel-service.service';
 export class HotelComponent implements OnInit {
   ngOnInit(): void {
     this.getHotelList();
+     
   }
 
   hotel = {
@@ -20,12 +21,17 @@ export class HotelComponent implements OnInit {
     city: '',
     starNumber: 0,
     RoomsNumber: 0,
-    generalcharacteristics: '',
+    generalcharacteristics: [],
    imgLink: ''
   };
 
-  hotels :any;
-
+  hotels: any;
+  cities : string[] = [];
+  starNumber: string[] = [];
+  RoomsNumber: string[] = [];
+  generalcharacteristics: string[] = [];
+   
+  
   getHotelList() {
     this.hs.getInfoList()
       .snapshotChanges()
@@ -42,8 +48,12 @@ export class HotelComponent implements OnInit {
         
         this.hotels = data;
         console.log(this.hotels)
+
+       
+        this. searchHotel()
       });
   }
+
   constructor(private db: AngularFireDatabase, private hs:HotelServiceService) {}
 
   addHotel() {
@@ -53,8 +63,45 @@ export class HotelComponent implements OnInit {
     this.hotel.city = '';
     this.hotel.starNumber = 0;
     this.hotel.RoomsNumber = 0;
-    this.hotel.generalcharacteristics = '';
- 
+    this.hotel.generalcharacteristics = [];
     this.hotel.imgLink= '';
   }
+
+
+  searchHotel() {
+    for (let i = 0; i < this.hotels.length; i++){
+
+
+     
+      let str = this.hotels[i].city
+      let str1 = this.hotels[i].starNumber
+      let str2 = this.hotels[i].RoomsNumber
+
+       let newGen = this.hotels[i].generalcharacteristics.split(',')
+      for (let j = 0; j < newGen.length; j++) {
+       
+        let str3 = newGen[j]
+        console.log(str3)
+        this.generalcharacteristics.push(str3)
+      }
+
+      this.cities.push(str)
+      this.starNumber.push(str1)
+      this.RoomsNumber.push(str2)
+      
+    }
+
+    this.cities = [...new Set(this.cities)];
+    this.starNumber = [...new Set(this.starNumber)];
+    this.RoomsNumber = [...new Set(this.RoomsNumber)];
+    
+    this.generalcharacteristics = [...new Set(this.generalcharacteristics)];
+
+     
+
+ 
+    console.log(this.generalcharacteristics)
+  }
+
+
 }
