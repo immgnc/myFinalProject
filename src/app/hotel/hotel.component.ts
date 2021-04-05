@@ -96,16 +96,22 @@ export class HotelComponent implements OnInit {
 
   searchHotel(form: any) {
     this.newHotels = [];
-    console.log(form.value.generalcharacteristics)
+    console.log(form.value.starNumber)
+
+ 
+
     this.hidden = false;
 console.log(this.hotels)
     for (let i = 0; i < this.hotels.length; i++) {
-      if (this.hotels[i].city === form.value.city) {
-      
-        console.log(this.hotels[i].city)
+      if (parseInt(form.value.starNumber) <= parseInt(this.hotels[i].starNumber)) {
         console.log(form.value.city)
-        this.newHotels.push({ ...this.hotels[i] })
-        console.log(this.newHotels)
+        if (this.hotels[i].city === form.value.city||!form.value.city) {
+      
+          console.log(this.hotels[i].city)
+          console.log(form.value.city)
+          this.newHotels.push({ ...this.hotels[i] })
+          console.log(this.newHotels)
+        }
       }
      
     }

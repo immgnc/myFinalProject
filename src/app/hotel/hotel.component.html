@@ -1,40 +1,44 @@
 <div class="body">
     <form class='container ' #mySearch="ngForm" class='mySearch' (ngSubmit)='searchHotel(mySearch )'>
 
-        <div class='row search col-12'>
+        <div class='row search col-10'>
 
             <div class='col-2 search '>
-                <select class=' mt-2' type="text" name="city" [(ngModel)]="hotel.city">
-                <option>City</option>
+
+                <label class='col-12' for="city">Select city</label>
+                <select class='col-12 ' type="text" name="city" [(ngModel)]="hotel.city">
+                <option> </option>
                 <option *ngFor="let city of cities">{{city}}</option>    
             </select>
             </div>
 
-            <div class='col-2'>
-
-                <select class=' mt-2' type="text" name="starNumber" [(ngModel)]='hotel.starNumber'>
-                <option >Hotel star</option>
-                <option *ngFor="let star of starNumber">Hotel star: {{star}}</option>    
+            <div class='col-2 '>
+                <label class='col-12' for="city">Select Min Star</label>
+                <select class='col-12' type="text" name="starNumber" [(ngModel)]='hotel.starNumber '>
+                <option > </option>
+                <option *ngFor="let star of starNumber">{{star}}</option>    
              </select>
             </div>
 
-            <div class='col-2 '>
-                <select class=' mt-2' type="text" name="RoomsNumber" [(ngModel)]='hotel.RoomsNumber'>
+            <!-- <div class='col-2 '>
+                <select class=' mt-2 ' type="text" name="RoomsNumber" [(ngModel)]='hotel.RoomsNumber '>
                 <option >Rooms Number</option>
                 <option *ngFor="let rooms of RoomsNumber" >Rooms Number: {{rooms}}</option>    
              </select>
-            </div>
+            </div> -->
 
-            <div class='col-2 '>
-                <select class=' mt-2' type="text" name="generalcharacteristics" [(ngModel)]='hotel.generalcharacteristics' multiple>
+            <div class='col-4 '>
+                <label class='col-12' for="city">Select General Characteristics</label>
+                <select class='col-12 ' type="text" name="generalcharacteristics" [(ngModel)]='hotel.generalcharacteristics ' multiple>
                 <option >General Char.</option>
                 <option *ngFor="let gen of generalcharacteristics" >{{gen}}</option>    
              </select>
 
             </div>
 
-            <div class='col-2 '>
-                <button type="submit" class='  mt-2 search'>Search</button>
+            <div class='col-3 '>
+                <label class='col-12'></label>
+                <button type="submit" class=' mt-2 search '>Search</button>
             </div>
 
 
@@ -56,7 +60,7 @@
                             <img [src]="hotel.imgLink">
                         </div>
 
-                        <a class="see-more" [routerLink]="'/details/' + hotel.key">{{hotel.hotelName}}</a>
+                        <a class="see-more" [routerLink]="'/details/ ' + hotel.key">{{hotel.hotelName}}</a>
                     </li>
                 </ul>
             </div>
@@ -73,7 +77,7 @@
                             <img [src]="hotel.imgLink">
                         </div>
 
-                        <a class="see-more" [routerLink]="'/details/' + hotel.key">{{hotel.hotelName}}</a>
+                        <a class="see-more" [routerLink]="'/details/ ' + hotel.key">{{hotel.hotelName}}</a>
                     </li>
                 </ul>
             </div>
@@ -90,41 +94,41 @@
 
 
 
-    <!-- <form class='container mt-7' #myForm="ngForm" class='myForm' (ngSubmit)='addHotel()'>
+    <!-- <form class='container mt-7 ' #myForm="ngForm" class='myForm ' (ngSubmit)='addHotel() '>
 
-    <div class='row'>
+    <div class='row '>
 
         <div class='col-12 '>
-            <input class='transparent mt-2' type="text" placeholder="HotelName" name="hotelName" [(ngModel)]='hotel.hotelName' required>
+            <input class='transparent mt-2 ' type="text" placeholder="HotelName" name="hotelName" [(ngModel)]='hotel.hotelName ' required>
         </div>
 
         <div class='col-12 '>
-            <input class='transparent mt-2' type="text" placeholder="City" name="city" [(ngModel)]='hotel.city' required>
+            <input class='transparent mt-2 ' type="text" placeholder="City" name="city" [(ngModel)]='hotel.city ' required>
         </div>
 
         <div class='col-12 '>
-            <input class='transparent mt-2' type="text" placeholder="Address" name="address" [(ngModel)]='hotel.address' required>
+            <input class='transparent mt-2 ' type="text" placeholder="Address" name="address" [(ngModel)]='hotel.address ' required>
         </div>
 
         <div class='col-12 '>
-            <input class='transparent mt-2' type="number" placeholder="StarNumber" name="starNumber" [(ngModel)]='hotel.starNumber' required>
+            <input class='transparent mt-2 ' type="number" placeholder="StarNumber" name="starNumber" [(ngModel)]='hotel.starNumber ' required>
         </div>
 
         <div class='col-12 '>
-            <input class='transparent mt-2' type="number" placeholder="RoomsNumber" name="RoomsNumber" [(ngModel)]='hotel.RoomsNumber' required>
+            <input class='transparent mt-2 ' type="number" placeholder="RoomsNumber" name="RoomsNumber" [(ngModel)]='hotel.RoomsNumber ' required>
         </div>
 
         <div class='col-12 '>
 
-            <input class='transparent mt-2' type="text" placeholder="generalcharacteristics" name="generalcharacteristics" [(ngModel)]='hotel.generalcharacteristics' required>
+            <input class='transparent mt-2 ' type="text" placeholder="generalcharacteristics" name="generalcharacteristics" [(ngModel)]='hotel.generalcharacteristics ' required>
         </div>
 
         <div class='col-12 '>
-            <input class='transparent mt-2' type="text" placeholder="ImgLink" name="imgLink" [(ngModel)]='hotel.imgLink' required>
+            <input class='transparent mt-2 ' type="text" placeholder="ImgLink" name="imgLink" [(ngModel)]='hotel.imgLink ' required>
         </div>
 
         <div class='col-12 '>
-            <button type="submit" class='transparent mt-2'>Enter</button>
+            <button type="submit" class='transparent mt-2 '>Enter</button>
         </div>
 
 

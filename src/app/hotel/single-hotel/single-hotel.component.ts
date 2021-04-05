@@ -25,11 +25,16 @@ export class SingleHotelComponent implements OnInit {
 
     this.hotelId = this.router.snapshot.params.id;
 
-    const hotel = this.hs.getHotel(this.hotelId);
+    let hotel = this.hs.getHotel(this.hotelId);
+
+    console.log(hotel)
 
     hotel.valueChanges().subscribe((data) => {
+      console.log(data)
       this.singleHotel = data;
+      console.log(this.singleHotel)
     });
+ 
   }
 
   removeItem() {
