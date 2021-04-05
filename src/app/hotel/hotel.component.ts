@@ -101,7 +101,8 @@ export class HotelComponent implements OnInit {
  
 
     this.hidden = false;
-console.log(this.hotels)
+    console.log(this.hotels)
+    
     for (let i = 0; i < this.hotels.length; i++) {
       if (parseInt(form.value.starNumber) <= parseInt(this.hotels[i].starNumber)) {
         console.log(form.value.city)
