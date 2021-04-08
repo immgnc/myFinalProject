@@ -11,7 +11,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
- 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserNameDirective } from './Validators/user-name.directive';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -32,8 +31,6 @@ import { environment } from '../environments/environment';
     HotelComponent,
     SingleHotelComponent,
      
-  
-  
   ],
   imports: [
     BrowserModule,
@@ -44,7 +41,8 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFireAuthModule
    
   ],
   providers: [],

@@ -1,59 +1,73 @@
 <div class="body">
-    <h3 class="mt-4"> <button class='transparent' mat-button (click)='change()'>{{auth}}</button></h3>
+    <h3 class="mt-4" *ngIf='open'> <button class=' transparent ' mat-button (click)='change() '>{{auth}}</button></h3>
+    <h3 class="mt-4" *ngIf='!open'> <button (click)='logOut()' class=' transparent ' mat-button (click)='change() '>Log Out</button></h3>
 
-    <form class='container mt-7' *ngIf="!x" #myForm="ngForm" (ngSubmit)='login(myForm)' class='myForm'>
+    <form class='container mt-7 ' *ngIf="!x&&open" #myForm="ngForm" (ngSubmit)='login(myForm) ' class='myForm '>
 
-        <div class='row'>
+        <div class='row '>
             <div class='col-12 '>
-                <input class='transparent mt-2' type="text" placeholder="UserName" name="userName" required>
+                <input class='transparent mt-2 ' type="text" placeholder="UserName" name="userName" required>
             </div>
             <div class='col-12 '>
-                <input class='transparent  mt-2' type="password" placeholder="Password" name="password" required>
+                <input class='transparent mt-2 ' type="password" placeholder="Password" name="password" required>
             </div>
-            <div class='col-12'>
+            <div class='col-12 '>
 
-                <button class='transparent mt-3' mat-button type="submit">Register</button>
+                <button class='transparent mt-3 ' mat-button type="submit">Login</button>
             </div>
+
+            <div class='col-12 p-0 m-0 '>
+
+                <button class='p-0 m-0 ' (click)='doFacebookLogin() ' class='transparent mt-3 '> <img class ='p-0 m-0 ' height ='50px' width ='250px'src="../../assets/Links/facebook-login-button-png-11.png" alt=""></button>
+            </div>
+
+            <div class='col-12 p-0 m-0 '>
+
+                <button class='p-0 m-0 ' (click)='doFacebookLogin() ' class='transparent mt-3 '> <img class ='p-0 m-0 ' height ='50px 'width ='250px'  src="../../assets/Links/google.JPG" alt=""></button>
+            </div>
+
+
+
         </div>
 
 
     </form>
 
 
-    <form class='container mt-7' *ngIf="x" #myForm="ngForm" class='myForm'>
+    <form class='container mt-7 ' *ngIf="x&&open" #myForm="ngForm" class='myForm '>
 
-        <div class='row'>
+        <div class='row '>
 
             <div class='col-12 '>
-                <input class='transparent mt-2' type="text" placeholder="Name" name="name" required>
+                <input class='transparent mt-2 ' type="text" placeholder="Name" name="name" required>
             </div>
 
             <div class='col-12 '>
-                <input class='transparent mt-2' type="text" placeholder="SurName" name="surName" required>
+                <input class='transparent mt-2 ' type="text" placeholder="SurName" name="surName" required>
             </div>
 
             <div class='col-12 '>
-                <input class='transparent mt-2' type="text" placeholder="UserName" name="userName" required>
+                <input class='transparent mt-2 ' type="text" placeholder="UserName" name="userName" required>
             </div>
 
             <div class='col-12 '>
-                <input class='transparent mt-2' type="password" placeholder="Password" name="password" required>
+                <input class='transparent mt-2 ' type="password" placeholder="Password" name="password" required>
             </div>
 
             <div class='col-12 '>
-                <input class='transparent mt-2' type="password" placeholder="Confirm Password" name="confirmPassword" required>
+                <input class='transparent mt-2 ' type="password" placeholder="Confirm Password" name="confirmPassword" required>
             </div>
 
             <div class='col-12 '>
-                <input class='transparent mt-2' type="number" placeholder="Tel" name="tel" required>
+                <input class='transparent mt-2 ' type="number" placeholder="Tel" name="tel" required>
             </div>
 
             <div class='col-12 '>
-                <input class='transparent mt-2' type="email" placeholder="Email" name="email" required>
+                <input class='transparent mt-2 ' type="email" placeholder="Email" name="email" required>
             </div>
 
-            <div class='col-12'>
-                <button class='transparent mt-2' mat-button type="submit">Register</button>
+            <div class='col-12 '>
+                <button class='transparent mt-2 ' mat-button type="submit">Register</button>
             </div>
 
         </div>
