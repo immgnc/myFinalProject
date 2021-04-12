@@ -1,94 +1,81 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit,EventEmitter, Output  } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase/app';
- 
-
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { AuthService } from '../Service/auth.service';
 
 @Component({
   selector: 'app-authoritation',
   templateUrl: './authoritation.component.html',
-  styleUrls: ['./authoritation.component.scss']
+  styleUrls: ['./authoritation.component.scss'],
 })
 export class AuthoritationComponent implements OnInit {
   @Output() valueChange = new EventEmitter();
-  constructor(private afAuth: AngularFireAuth) {
-    this.afAuth.authState.subscribe(user => {
+  constructor(private as: AuthService) {}
 
-      
-      console.log(user)
-      if (user) {
-this.open = false;
-      }
-    })
-
-  }
+   
 
   ngOnInit(): void {
+  
+
+    this.as.isAuthUpdate.subscribe(
+      (isAuth) => {
+        this.open = !isAuth;
+        console.log( isAuth);
+          
+      }
+    );
+
+     
+
+    console.log(this.open)
+    console.log(this.as.isAuth)
   }
 
+  
+    
   provider: any;
-  open = true;
+  open: any;
 
   doFacebookLogin() {
-    return new Promise<any>((resolve, reject) => {
-      this.provider = new firebase.auth.FacebookAuthProvider()
-      this.afAuth.signInWithPopup(this.provider)
-        .then(
-          response => {
-            console.log(response)
-            resolve(response)
-            this.open = false
-          },
-          error => {
-            console.log(error)
-            reject (error)
-          }
-      )
-    })
+    this.as.doFacebookLogin();
+    
   }
 
-  logOut() {
-    this.afAuth.signOut().then(() => {
-        
-      console.log('Log Out')
-      this.open = true;
-    
-      
-    })
- 
+  fcLogOut() {
+    this.as.logOut();
     
   }
 
   user = {
-    'username': 'immgnc',
-    'password': 'qwerty'
-  }
+    username: 'immgnc',
+    password: 'qwerty',
+  };
 
   users = {
-    'username': '',
-    'password': ''
+    username: '',
+    password: '',
   };
-  auth = 'Login'
-  x=true
+  auth = 'Login';
+  x = true;
 
-  wel=false;
+  wel = false;
   change() {
     if (this.auth == 'Login') {
-      this.auth = "Registration"
-      this.x=!this.x
+      this.auth = 'Registration';
+      this.x = !this.x;
+    } else {
+      this.auth = 'Login';
+      this.x = !this.x;
     }
-    else { this.auth ='Login'; this.x=!this.x  }
-}
+  }
 
-login(form: any) {
-  if(this.users.username == this.user.username) {this.wel =true}
+  login(form: any) {
+    if (this.users.username == this.user.username) {
+      this.wel = true;
+    }
 
-  this.valueChange.emit(this.wel)
+    this.valueChange.emit(this.wel);
     console.log(this.users.username);
-  console.log(this.users.password);
-  console.log (this.wel)
-        
-      }
+    console.log(this.users.password);
+    console.log(this.wel);
+  }
 }
-

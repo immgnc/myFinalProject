@@ -1,6 +1,6 @@
 <div class="body">
     <h3 class="mt-4" *ngIf='open'> <button class=' transparent ' mat-button (click)='change() '>{{auth}}</button></h3>
-    <h3 class="mt-4" *ngIf='!open'> <button (click)='logOut()' class=' transparent ' mat-button (click)='change() '>Log Out</button></h3>
+    <h3 class="mt-4" *ngIf='!open'> <button (click)='fcLogOut()' class=' transparent '>Log Out</button></h3>
 
     <form class='container mt-7 ' *ngIf="!x&&open" #myForm="ngForm" (ngSubmit)='login(myForm) ' class='myForm '>
 

@@ -1,9 +1,24 @@
 <section class="single-hotel mt-3">
     <div class="single-hotel-wrapper">
 
-        <div class="hotel-left-side ">
-            <img [src]="singleHotel.imgLink">
+        <div class="col-md-8  col-sm-6  m-3">
+
+            <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+
+
+                <mdb-carousel-item *ngFor="let i of imgs">
+                    <div class="view w-100">
+                        <img class="d-block w-100" [src]="i" height="350px" width="450px" alt="Kutaisi">
+                        <div class="mask rgba-light waves-light" mdbWavesEffect></div>
+                    </div>
+                </mdb-carousel-item>
+
+
+
+
+            </mdb-carousel>
         </div>
+
 
         <div class="hotel-right-side">
 
@@ -35,9 +50,12 @@
 
             <div class="hotel-details">
                 <div class="avail">
-                    <h4>Hotels Gneral Characteristics: : </h4>
+                    <h4>Hotels General Characteristics: : </h4>
                     <span class="availibility-status"> {{singleHotel.generalcharacteristics}} </span>
                 </div>
+            </div>
+            <div class="col-6">
+                <button type="button" (click)="booking()" class="btn btn-primary">Booking</button>
             </div>
         </div>
 

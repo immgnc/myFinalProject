@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotelServiceService } from '../../Service/hotel-service.service';
 
@@ -7,19 +8,28 @@ import { HotelServiceService } from '../../Service/hotel-service.service';
   templateUrl: './single-hotel.component.html',
   styleUrls: ['./single-hotel.component.scss'],
 })
+  
 export class SingleHotelComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private hs: HotelServiceService,
-    private rout: Router
+    private rout: Router,
+   
   ) {}
+
 
   counter(arrayLength:any) {
     return new Array(arrayLength);
   }
 
-  singleHotel : any;
+  
+  
 
+  singleHotel: any;
+  
+  imgs: any = [];
+  
+  filePath: any;
   hotelId = '';
   ngOnInit(): void {
 
@@ -27,12 +37,21 @@ export class SingleHotelComponent implements OnInit {
 
     let hotel = this.hs.getHotel(this.hotelId);
 
-    console.log(hotel)
+    
 
     hotel.valueChanges().subscribe((data) => {
-      console.log(data)
+      
       this.singleHotel = data;
-      console.log(this.singleHotel)
+      
+    
+      this.imgs = this.singleHotel.imgRooms
+
+      this.imgs = this.imgs.split(',')
+
+     
+
+      console.log(this.imgs)
+      
     });
  
   }
@@ -42,4 +61,14 @@ export class SingleHotelComponent implements OnInit {
 
     this.rout.navigate(['/hotels']);
   }
+
+  booking() {
+    
+  }
+
+   
 }
+
+
+
+ 
