@@ -63,7 +63,7 @@ export class SingleHotelComponent implements OnInit {
   }
 
   booking() {
-    
+    console.log()
   }
 
    
