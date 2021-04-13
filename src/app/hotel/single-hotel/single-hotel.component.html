@@ -1,69 +1,62 @@
-<section class="single-hotel mt-3">
-    <div class="single-hotel-wrapper">
+<div class="container col-12 ml-2 mr-0 text-white body">
+    <div class=" row col-11 ">
 
-        <div class="col-md-8  col-sm-6  m-3">
+        <div class='col-12 h1 font-weight-bold'> {{singleHotel.hotelName}}</div>
+        <div class="col-8 ">
 
-            <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
-
-
-                <mdb-carousel-item *ngFor="let i of imgs">
-                    <div class="view w-100">
-                        <img class="d-block w-100" [src]="i" height="350px" width="450px" alt="Kutaisi">
-                        <div class="mask rgba-light waves-light" mdbWavesEffect></div>
+            <mdb-carousel class="carousel slide carousel-fade " [animation]=" 'fade' ">
+                <mdb-carousel-item *ngFor="let i of imgs ">
+                    <div class="view w-100 ">
+                        <img class="d-block w-100 " [src]="i " height="450px " width="450px " alt="Kutaisi ">
+                        <div class="mask rgba-light waves-light " mdbWavesEffect></div>
                     </div>
                 </mdb-carousel-item>
-
-
-
-
             </mdb-carousel>
+
         </div>
 
+        <div class='col-4 h3 font-weight-bold'>
+            <div class='col-12 mt-2'>
+                City: {{singleHotel.city}}
+            </div>
 
-        <div class="hotel-right-side">
-
-            <h3 class="hotel-name">
-                {{singleHotel.hotelName}}
-            </h3>
-
-            <h4 class="hotel-name">
-                city : {{singleHotel.city}}
-            </h4>
-            <h4 class="hotel-name">
+            <div class='col-12 mt-2'>
                 Address: {{singleHotel.address}}
-            </h4>
-
-            <div class="rating">
-
-                <div class="star-rating pr-3">
-                    <div class="star-holder">
-                        <span>Star Number:</span> {{singleHotel.starNumber}}
-                    </div>
-                </div>
-
-                <div class="star-rating">
-                    <div class="star-holder">
-                        <span>Rooms Number:</span> {{singleHotel.RoomsNumber}}
-                    </div>
-                </div>
-
-                <div class="star-rating">
-                    <div class="star-holder">
-                        <span>Free Numbers:</span> {{singleHotel.booking}}
-                    </div>
-                </div>
             </div>
 
-            <div class="hotel-details">
-                <div class="avail">
-                    <h4>Hotels General Characteristics: : </h4>
-                    <span class="availibility-status"> {{singleHotel.generalcharacteristics}} </span>
-                </div>
+            <div class='col-12 mt-2'>
+                Star Number: {{singleHotel.starNumber}}
             </div>
-            <div class="col-6">
-                <button type="button" (click)="booking()" class="btn btn-primary">Booking</button>
+
+            <div class='col-12 mt-2'>
+                Rooms Number:: {{singleHotel.RoomsNumber}}
             </div>
+
+            <div class='col-12 mt-2'>
+                Free Numbers: {{singleHotel.booking}}
+            </div>
+
+            <div class='col-12'>
+
+                <button type="button " (click)="booking() " class="btn btn-primary p-2 m-2">Booking</button>
+
+                <a class="btn btn-primary p-2 m-2" href="https://tbcpay.ge/services" target="_blank">Pay</a>
+
+            </div>
+
+
         </div>
+
+
+        <div class='col-12 mt-2 h3 font-weight-bold'>
+            Hotels General Characteristics: : {{singleHotel.generalcharacteristics}}
+        </div>
+        <div class='col-12 mt-2 h3 font-weight-bold'>
+            Families Policy: : {{singleHotel.familiesPolicy}}
+        </div>
+
+
 
     </div>
-</section>
+
+</div>

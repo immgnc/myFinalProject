@@ -63,7 +63,13 @@ export class SingleHotelComponent implements OnInit {
   }
 
   booking() {
-    console.log()
+    let newBooking: any = { ...this.singleHotel, hotelId:this.hotelId }
+     
+    console.log(newBooking)
+
+    newBooking.booking=--newBooking.booking;
+    this.hs.updateHotel(newBooking)
+    
   }
 
    

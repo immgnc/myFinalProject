@@ -28,7 +28,7 @@ export class HotelServiceService {
   }
 
   updateHotel(hotelObject:any) {
-    this.db.list(this.dbPath).update(hotelObject.id, hotelObject)
+    this.db.list(this.dbPath).update(hotelObject.hotelId, hotelObject)
   }
 
   getHotel(hotelKey:any) {
