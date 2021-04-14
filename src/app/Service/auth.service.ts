@@ -49,6 +49,28 @@ export class AuthService {
     });
   }
 
+  doGoogleLogin() {
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
+      
+      this.afAuth.signInWithPopup(provider).then(
+        (response: any) => {
+          this.saveUser(response.additionalUserInfo.profile);
+          resolve(response);
+          console.log(this.getUser);
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+
+
   logOut() {
     this.afAuth.signOut().then(() => {
       this.isAuth = false;

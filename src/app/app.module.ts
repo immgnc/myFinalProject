@@ -18,6 +18,7 @@ import { HotelComponent } from './hotel/hotel.component';
 import { SingleHotelComponent } from './hotel/single-hotel/single-hotel.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { CalendarComponent } from './calendar/calendar.component';
  
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { environment } from '../environments/environment';
     WelcomeComponent,
     HotelComponent,
     SingleHotelComponent,
+    CalendarComponent,
      
   ],
   imports: [

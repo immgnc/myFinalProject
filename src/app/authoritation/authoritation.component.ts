@@ -40,6 +40,10 @@ export class AuthoritationComponent implements OnInit {
     
   }
 
+  doGoogleLogin() {
+    this.as.doGoogleLogin()
+  }
+
   fcLogOut() {
     this.as.logOut();
     

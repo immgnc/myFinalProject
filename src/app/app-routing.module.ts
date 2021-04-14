@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { SingleHotelComponent } from './hotel/single-hotel/single-hotel.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'details/:id',
     component: SingleHotelComponent
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent
   }
 
    
